@@ -9,13 +9,8 @@ Echo deb:
   - text: deb https://pkg.jenkins.io/debian-stable binary/
    
 Apt Update:
-  pkg.latest:
-  - refresh: True
-  - cache_valid_time: 300 #New in version 2016.11.0
-
-Apt Upgrade:
-  pkg.upgrade:
-  - refresh: True
+  module.run:
+  - name: okg.refresh_db
 
 
 
