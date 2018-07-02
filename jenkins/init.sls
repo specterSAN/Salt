@@ -38,10 +38,18 @@ jenkins file:
     - group: jenkins
     - mode: 0666
 
+groovy DIR:
+  file.directory:
+    - dir_mode: 755 
+    - name: /var/lib/jenkins/init.groovy.d/ 
+    - user: jenkins
+    - group: jenkins
+
 groovy file:
   file.managed:
     - source: salt://jenkins/files/basic-security.groovy
+    - mode: 0777
     - name: /var/lib/jenkins/init.groovy.d/basic-security.groovy 
     - user: jenkins
     - group: jenkins
-    - mode: 0777
+
