@@ -1,7 +1,8 @@
-Add Jenkins key:
-  pkg.add_repo_key:
-  - name: Jenkins KEY
-  - path: https://pkg.jenkins.io/debian/jenkins-ci.org.key 
+jenkins_repo:
+  pkgrepo.managed:
+   - file: /etc/apt/sources.list.d/jenkins.list
+   - name: deb https://pkg.jenkins.io/debian-stable binary/
+   - key_url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
 
 Echo deb:
   file.append:
@@ -10,7 +11,7 @@ Echo deb:
    
 Apt Update:
   module.run:
-  - name: okg.refresh_db
+  - name: pkg.refresh_db
 
 
 
