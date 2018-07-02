@@ -13,5 +13,35 @@ Apt Update:
   module.run:
   - name: pkg.refresh_db
 
+Installing packages:
+  pkg.installed:
+  - pkgs:
+    - default-jre
+    - default-jdk
+    - jenkins
+    - maven
+    - git
 
+mavenenv.sh:
+  file.managed:
+    - source: salt://jenkins/files/mavenenv.sh
+    - name: /etc/profile.d/mavenenv.sh 
+    - user: vagrant
+    - group: vagrant
+    - mode: 0777
 
+jenkins file:
+  file.managed:
+    - source: salt://jenkins/files/jenkins
+    - name: /etc/default/jenkins 
+    - user: jenkins
+    - group: jenkins
+    - mode: 0666
+
+groovy file:
+  file.managed:
+    - source: salt://jenkins/files/basic-security.groovy
+    - name: /var/lib/jenkins/init.groovy.d/basic-security.groovy 
+    - user: jenkins
+    - group: jenkins
+    - mode: 0777
