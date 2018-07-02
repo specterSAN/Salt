@@ -53,3 +53,9 @@ groovy file:
     - user: jenkins
     - group: jenkins
 
+installing-plugins:
+  cmd.script:
+    - source: salt://jenkins/files/script.sh
+    - cwd: /
+    - user: root
+    - template: jinja
